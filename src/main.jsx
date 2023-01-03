@@ -8,6 +8,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <React.StrictMode>
       <JournalApp />
-    </React.StrictMode>,
+    </React.StrictMode>
   </BrowserRouter>
 )
