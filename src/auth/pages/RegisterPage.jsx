@@ -56,6 +56,8 @@ export const RegisterPage = () => {
               name="email"
               value={ email }
               onChange={ onInputChange }
+              error={ !!emailValid && formSubmitted }
+              helperText={ emailValid }
             />
           </Grid>
 
@@ -69,6 +71,8 @@ export const RegisterPage = () => {
               name="password"
               value={ password }
               onChange={ onInputChange }
+              error={ !!passwordValid && formSubmitted  }
+              helperText={ passwordValid }
             />
           </Grid>
 
