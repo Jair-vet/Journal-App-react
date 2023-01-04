@@ -1,6 +1,6 @@
-import { singInWithGoogle } from "../../firebase/providers";
-import { checkingCredentials, login, logout } from "./autSlice";
-
+import { /* loginWithEmailPassword */ registerUserWithEmailPassword, singInWithGoogle, /* logoutFirebase */ } from '../../firebase/providers';
+// import { clearNotesLogout } from '../journal';
+import { checkingCredentials, logout, login } from './';
 
 export const checkingAuthentication = ( email, password ) => {
     return async( dispatch ) => {
@@ -21,4 +21,19 @@ export const startGoogleSignIn = () => {
         dispatch( login( result )) // importar LOGIN
 
     }
+}
+
+
+export const startCreatingUserWithEmailPassword = ({ email, password, displayName }) => {
+    return async( dispatch ) => {
+
+        dispatch( checkingCredentials() );
+
+        const result = await registerUserWithEmailPassword({ email, password, displayName });
+        if ( !result.ok ) return dispatch( logout( result.errorMessage ) );
+
+        dispatch( login( result ))
+
+    }
+
 }
