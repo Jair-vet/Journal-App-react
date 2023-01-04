@@ -40,7 +40,7 @@ export const useForm = ( initialForm = {}, formValidations = {}) => {
         
         const formCheckedValues = {};
         
-        for (const formField of Object.keys( formValidations )) {
+        for (const formField of Object.keys( formValidations )) {  // hacemos un barrido de cada key
             const [ fn, errorMessage ] = formValidations[formField];
 
             formCheckedValues[`${ formField }Valid`] = fn( formState[formField] ) ? null : errorMessage;
@@ -48,8 +48,6 @@ export const useForm = ( initialForm = {}, formValidations = {}) => {
 
         setFormValidation( formCheckedValues );
     }
-
-
 
     return {
         ...formState,
