@@ -50,8 +50,8 @@ export const registerUserWithEmailPassword = async({ email, password, displayNam
         }
 
     } catch (error) {
-        console.log(error);
-        return { ok: false, errorMessage: error.message }
+        // console.log(error);
+        return { ok: false, errorMessage: "El correo ya existe" /* error.message */ }
     }
 
 }
