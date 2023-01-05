@@ -57,23 +57,23 @@ export const registerUserWithEmailPassword = async({ email, password, displayNam
 }
 
 
-// export const loginWithEmailPassword = async({ email, password }) => {
-// 
-//     try {
-//         const resp = await signInWithEmailAndPassword( FirebaseAuth, email, password );
-//         const { uid, photoURL, displayName } = resp.user;
-// 
-//         return {
-//             ok: true,
-//             uid, photoURL, displayName
-//         }
-// 
-//     } catch (error) {
-//         return { ok: false, errorMessage: error.message }
-//     }
-// }
-// 
-// export const logoutFirebase = async() => {
-//     return await FirebaseAuth.signOut();
-// }
+export const loginWithEmailPassword = async({ email, password }) => {
+
+    try {
+        const resp = await signInWithEmailAndPassword( FirebaseAuth, email, password );
+        const { uid, photoURL, displayName } = resp.user;
+
+        return {
+            ok: true,
+            uid, photoURL, displayName
+        }
+
+    } catch (error) {
+        return { ok: false, errorMessage: "Correo o Contraseña Incorrecto" }
+    }
+}
+
+export const logoutFirebase = async() => {
+    return await FirebaseAuth.signOut();
+}
 

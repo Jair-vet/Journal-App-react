@@ -7,7 +7,7 @@ import { Google } from "@mui/icons-material"
 import { AuthLayout } from '../layout/AuthLayout';
 
 import { useForm } from '../../hooks/useForm';
-import { checkingAuthentication, startGoogleSignIn } from '../../store/auth';
+import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth';
 
 
 const formData = {
@@ -17,7 +17,7 @@ const formData = {
 
 export const LoginPage = () => {
 
-  const { status } = useSelector( state => state.auth );
+  const { status, errorMessage } = useSelector( state => state.auth );
 
   const dispatch = useDispatch();
   const { email, password, onInputChange } = useForm( formData );
@@ -27,8 +27,8 @@ export const LoginPage = () => {
   const onSubmit = ( event ) => {
     event.preventDefault();
 
-    console.log({ email, password });
-    dispatch( checkingAuthentication() );
+    // console.log({ email, password });
+    dispatch( startLoginWithEmailPassword({ email, password }) );
   }
 
   const onGoogleSignIn = () => {
@@ -65,6 +65,18 @@ export const LoginPage = () => {
               onChange={ onInputChange }
             />
           </Grid>
+          {/* Alerta Error */}
+          <Grid 
+              container
+              display={ !!errorMessage ? '': 'none' }
+              sx={{ mt: 1 }}>
+              <Grid 
+                  item 
+                  xs={ 12 }
+                >
+                <Alert severity='error'>{ errorMessage }</Alert>
+              </Grid>
+            </Grid>
 
           {/* Botones */}
           <Grid container spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
