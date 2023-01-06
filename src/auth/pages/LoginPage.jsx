@@ -11,8 +11,8 @@ import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth
 
 
 const formData = {
-  email:    'correo@correo.com',
-  password:  '123456',
+  email:    '',
+  password:  '',
 }
 
 export const LoginPage = () => {
