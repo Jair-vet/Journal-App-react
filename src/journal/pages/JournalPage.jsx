@@ -11,7 +11,7 @@ export const JournalPage = () => {
       {/* <Typography >Lorem ipsum ipsum atque exercitationem vero at architecto maiores.</Typography> */}
      
       {/* No hay nada seleccionado */}
-      {/* <NothingSelectedView /> */}
+      <NothingSelectedView />
 
       <NoteView />
 
