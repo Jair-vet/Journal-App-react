@@ -8,7 +8,7 @@ import 'sweetalert2/dist/sweetalert2.css';
 
 import { useForm } from '../../hooks/useForm';
 import { ImageGallery } from '../components';
-import { setActiveNote, startSaveNote /* startDeletingNote, startUploadingFiles */ } from '../../store/journal';
+import { setActiveNote, startSaveNote, startUploadingFiles, /* startDeletingNote */ } from '../../store/journal';
 
 
 export const NoteView = () => {
@@ -40,10 +40,10 @@ export const NoteView = () => {
         dispatch( startSaveNote() );
     }
 
-    // const onFileInputChange = ({ target }) => {
-    //     if( target.files === 0 ) return;
-    //     dispatch( startUploadingFiles( target.files ) );
-    // }
+    const onFileInputChange = ({ target }) => {
+        if( target.files === 0 ) return;
+        dispatch( startUploadingFiles( target.files ) );
+    }
 
     // const onDelete = () => {
     //     dispatch( startDeletingNote() );
@@ -67,7 +67,7 @@ export const NoteView = () => {
                 type="file"
                 multiple
                 ref={ fileInputRef }
-                // onChange={ onFileInputChange }
+                onChange={ onFileInputChange }
                 style={{ display: 'none' }}
             />
 
@@ -129,7 +129,7 @@ export const NoteView = () => {
 
 
         {/* Image gallery */}
-        <ImageGallery /* images={ note.imageUrls } */ />
+        <ImageGallery images={ note.imageUrls } />
 
     </Grid>
   )
