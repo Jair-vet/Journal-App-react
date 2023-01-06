@@ -1,12 +1,12 @@
 import { TurnedInNot } from '@mui/icons-material'
 import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 // import { TurnedInNot } from '@mui/icons-material';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { SideBarItem } from './';
 
 export const SideBar = ({ drawerWidth = 280 }) => {
 
-    // const { displayName } = useSelector( state => state.auth );
+    const { displayName } = useSelector( state => state.auth );
     // const { notes } = useSelector( state => state.journal );
 
     return (
@@ -24,8 +24,8 @@ export const SideBar = ({ drawerWidth = 280 }) => {
             >
                 <Toolbar>
                     <Typography variant='h6' noWrap component='div'>
-                        Jair Aceves
-                        {/* { displayName } */}
+                        {/* Nombre */}
+                        { displayName }
                     </Typography>
                 </Toolbar>
                 <Divider />
